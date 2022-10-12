@@ -3,7 +3,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { BiSun, BiMoon, BiCart } from "react-icons/bi";
 import { Link } from "@reach/router";
 import { useCart } from "react-use-cart";
-import { ThemeContext } from "../../GlobalComponents/ThemeProvider";
+import { ThemeContext } from "../../../GlobalComponents/ThemeProvider";
 
 const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);

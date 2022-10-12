@@ -4,6 +4,8 @@ import { useCart } from "react-use-cart";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 
+// import {Container,Typography,Button, Grid} from '@mui/material';
+
 const Cart = () => {
   const [theme] = useThemeHook();
   const {
@@ -15,7 +17,7 @@ const Cart = () => {
     emptyCart,
   } = useCart();
   return (
-    <Container className="py-4 mt-5">
+    <Container className="py-4">
       <h1
         className={`${
           theme ? "text-light" : "text-light-primary"
@@ -121,7 +123,7 @@ const Cart = () => {
               </Button>
               <Button variant="success" className="m-2">
                 <BsCartCheck size="1.7rem" />
-                Clear Cart
+                Checkout
               </Button>
             </Col>
           </Row>

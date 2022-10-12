@@ -8,7 +8,7 @@ const ThemeProvider = ({children}) => {
         localStorage.setItem('theme', JSON.stringify(theme));
     },[theme]);
 
-    const setThemeMode = mode => setTheme(mode);
+    const setThemeMode = (mode) => setTheme(mode);
     return (
         <ThemeContext.Provider value={{ theme, setThemeMode}}>
             {children}

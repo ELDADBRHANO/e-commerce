@@ -4,7 +4,8 @@ import { BiSearch } from "react-icons/bi";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 import SearchFilter from "react-filter-search";
 import ProductCard from "../../ProductCard/ProductCard";
-import getResponse from "../../../service/product.service";
+import getResponse from "../../../service/productCard.service";
+import { Typography } from "@mui/material";
 const Home = () => {
   const [theme] = useThemeHook();
   const [searchInput, setSearchInput] = useState("");
@@ -15,10 +16,13 @@ const Home = () => {
   return (
     <Container className="py-4">
       <Row className="justify-content-center">
+        {/* <div>
+        <img src="/images/commercial.gif" alt="commercial" />
+        </div> */}
         <Col xs={10} md={7} lg={6} xl={4} className="mb-3 mx-auto text-center">
-          <h1 className={theme ? "text-light my-5" : "text-black my-5"}>
+          <Typography variant="h6" className={theme ? "text-light my-5" : "text-black my-5"}>
             Search products
-          </h1>
+          </Typography>
           <InputGroup className="mb-3">
             <InputGroup.Text
               className={
