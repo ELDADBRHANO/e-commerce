@@ -2,25 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
-// import SearchFilter from "react-filter-search";
-// import ProductCard from "../components/ProductCard";
-
+import SearchFilter from "react-filter-search";
+import ProductCard from "../../ProductCard/ProductCard";
+import getResponse from "../../../service/product.service";
 const Home = () => {
   const [theme] = useThemeHook();
   const [searchInput, setSearchInput] = useState("");
   const [productData, setProductData] = useState([]);
-
-  async function getResponse() {
-    const res = await fetch("https://fakestoreapi.com/products").then((res) =>
-      res.json()
-    );
-    setProductData(await res);
-  }
-
   useEffect(() => {
-    getResponse();
+   getResponse().then((res)=>setProductData(res))
   }, []);
-
   return (
     <Container className="py-4">
       <Row className="justify-content-center">
@@ -48,7 +39,7 @@ const Home = () => {
             />
           </InputGroup>
         </Col>
-        {/* <SearchFilter
+        <SearchFilter
           value={searchInput}
           data={productData}
           renderResults={(results) => (
@@ -58,7 +49,7 @@ const Home = () => {
               ))}
             </Row>
           )}
-        /> */}
+        />
       </Row>
     </Container>
   );
