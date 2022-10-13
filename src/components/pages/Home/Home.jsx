@@ -18,11 +18,8 @@ const Home = () => {
   }, []);
   return (
     <Container className="py-4">
-      
       <Row className="justify-content-center">
-        {/* <div>
-        <img src="/images/commercial.gif" alt="commercial" />
-        </div> */}
+      <img src="/images/commercial.gif" alt="commercial" />
         <Col xs={10} md={7} lg={6} xl={4} className="mb-3 mx-auto text-center">
           <Typography variant="h6" className={theme ? "text-light my-5" : "text-black my-5"}>
             Search products

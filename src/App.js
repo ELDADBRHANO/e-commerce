@@ -5,7 +5,6 @@ import { Router } from "@reach/router";
 import { Cart, Header, Home, Product } from "./components";
 import Login from "./components/featurs/Login/Login";
 import { useEffect } from "react";
-import UserProvider from "./components/context/user-context";
 function App() {
   const [theme] = useThemeHook();
   useEffect(()=>{
