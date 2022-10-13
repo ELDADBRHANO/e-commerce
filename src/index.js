@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import {ThemeProvider}from './GlobalComponents/ThemeProvider';
 import { render } from 'react-dom';
 import {CartProvider} from 'react-use-cart';
+import UserProvider from './components/context/user-context';
 
 render(
   <React.StrictMode>
     <ThemeProvider>
       <CartProvider>
-          <App />
+        <UserProvider>
+           <App />
+        </UserProvider>
       </CartProvider>
     </ThemeProvider>
   </React.StrictMode>

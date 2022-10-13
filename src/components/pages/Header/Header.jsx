@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
-import { BiSun, BiMoon, BiCart } from "react-icons/bi";
+import { BiSun, BiMoon, BiCart,BiUserCircle } from "react-icons/bi";
 import { Link } from "@reach/router";
 import { useCart } from "react-use-cart";
 import { ThemeContext } from "../../../GlobalComponents/ThemeProvider";
@@ -8,6 +8,7 @@ import { ThemeContext } from "../../../GlobalComponents/ThemeProvider";
 const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
+
   useEffect(() => {
     setThemeMode(darkMode);
   }, [darkMode]);
@@ -22,7 +23,7 @@ const Header = () => {
       }
       style={{ width: "100%", position: "fixed", zIndex: 100 }}
     >
-      <Container>
+      <Container className="ms-auto">
         <Link to="/">
           <Navbar.Brand
             className={darkMode ? "text-dark-primary" : "text-light-primary"}
@@ -53,6 +54,17 @@ const Header = () => {
                   {totalItems}
                 </span>
               )}
+              <span style={{ marginLeft: !isEmpty ? "-13px" : 0 }}></span>
+            </Link>
+            
+
+            <Link
+              to="/login"
+              className={`${
+                darkMode ? "text-dark-primary" : "text-light-primary"
+              } d-flex align-items-center`}
+            >
+              <BiUserCircle size="2rem" />
               <span style={{ marginLeft: !isEmpty ? "-13px" : 0 }}></span>
             </Link>
           </Nav>

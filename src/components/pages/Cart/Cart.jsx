@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, Container, Col, Row, Table } from "react-bootstrap";
 import { useCart } from "react-use-cart";
 import { BsCartCheck, BsCartX } from "react-icons/bs";

@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useCart } from "react-use-cart";
 import { BsCartPlus } from "react-icons/bs";
-import { useThemeHook } from "../../GlobalComponents/ThemeProvider";
-import Snackbar from '@mui/material/Snackbar';
+import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data}) => {
+  
   let { image, price, title } = data;
   const [theme] = useThemeHook();
   const { addItem } = useCart();
@@ -13,7 +12,8 @@ const ProductCard = ({ data }) => {
     addItem(data);
   };
   return (
-    <Card
+    
+    <Card 
       style={{ width: "18rem", height: "auto" }}
       className={`${
         theme ? "bg-light-black text-light" : "bg-lihgt text-black"
@@ -47,15 +47,6 @@ const ProductCard = ({ data }) => {
         <Card.Title>
           Price: <span className="h3">{`${price} $`}</span>
         </Card.Title>
-        <select
-          class="form-select form-select-lg mb-3"
-          aria-label=".form-select-lg example"
-        >
-          <option selected>sizes</option>
-          <option defaultValue="1">S</option>
-          <option defaultValue="2">M</option>
-          <option defaultValue="3">L</option>
-        </select>
         <Button id="btnAddToCart"
           onClick={() => addToCart()}
           className={`${

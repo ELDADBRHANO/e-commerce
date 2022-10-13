@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import productResponse from '../../../service/Product-service';
-import ProductCard from '../../ProductCard/ProductCard';
+import ProductCard from '../../featurs/ProductCard/ProductCard';
 function Product() {
   const [products,setProducts]=useState([]);
 console.log(products);

@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 import SearchFilter from "react-filter-search";
-import ProductCard from "../../ProductCard/ProductCard";
+import ProductCard from "../../featurs/ProductCard/ProductCard";
 import getResponse from "../../../service/productCard.service";
 import { Typography } from "@mui/material";
+
 const Home = () => {
   const [theme] = useThemeHook();
   const [searchInput, setSearchInput] = useState("");
   const [productData, setProductData] = useState([]);
+ 
+
   useEffect(() => {
    getResponse().then((res)=>setProductData(res))
   }, []);
   return (
     <Container className="py-4">
+      
       <Row className="justify-content-center">
         {/* <div>
         <img src="/images/commercial.gif" alt="commercial" />

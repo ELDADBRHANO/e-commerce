@@ -1,23 +1,25 @@
-import React, { useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useThemeHook } from "./GlobalComponents/ThemeProvider";
-import Header from "./components/pages/Header/Header";
 import { Router } from "@reach/router";
-import Home from "./components/pages/Home/Home";
-import Cart from "./components/pages/Cart/Cart";
-
+import { Cart, Header, Home, Product } from "./components";
+import Login from "./components/featurs/Login/Login";
+import { useEffect } from "react";
+import UserProvider from "./components/context/user-context";
 function App() {
   const [theme] = useThemeHook();
-
+  useEffect(()=>{
+    <Login/>
+  },[])
   return (
     <main
       className={theme ? "bg=black" : "bg-light-2"}
       style={{ height: "100vh", overflowY: "auto" }}
     >
-      <Header />
+        <Header />
       <Router>
-        <Home path="/" />
+       <Home path="home" />
+        <Login path='/'/>
         <Cart path="/cart" />
       </Router>
     </main>
