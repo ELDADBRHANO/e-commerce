@@ -1,44 +1,53 @@
-import { createContext,useContext,useEffect,useState } from "react";
-import {createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged,
-GoogleAuthProvider,
-signInWithPopup
-} from 'firebase/auth'
+import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 
+const userAuthContext = createContext();
 
-
-  const userAuthContext = createContext();
-
-export default function UserAuthContextProvider({children}) {
-  const [user, setUser]= useState()
-  function signUp(email,password){
-    return createUserWithEmailAndPassword(auth,email,password)
+export default function UserAuthContextProvider({ children }) {
+  const [user, setUser] = useState();
+  function signUp(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
   }
-  function logIn(email,password){
-    return signInWithEmailAndPassword(auth,email,password)
+  function logIn(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
   }
-  function logOut(){
-    return signOut(auth)
+  function logOut() {
+    return signOut(auth);
   }
-  function googleSignIn(){
-    const googleAuthProvider= new GoogleAuthProvider();
-    return signInWithPopup(auth,googleAuthProvider)
-   }
-  useEffect(()=>{
-   const unsbscribe=  onAuthStateChanged(auth,(currentUser)=>{
-      setUser(currentUser)
-    })
-    return ()=>{
-      unsbscribe()
-    }
-  },[])
-  return <userAuthContext.Provider value={{user, signUp,logIn,logOut,googleSignIn}}>{children}</userAuthContext.Provider>
+  function googleSignIn() {
+    const googleAuthProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleAuthProvider);
+  }
+  function signInWithFacebook() {
+    const provider = new FacebookAuthProvider();
+    return signInWithPopup(auth, provider);
+  }
+  useEffect(() => {
+    const unsbscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => {
+      unsbscribe();
+    };
+  }, []);
+  return (
+    <userAuthContext.Provider
+      value={{ user, signUp, logIn, logOut, googleSignIn, signInWithFacebook }}
+    >
+      {children}
+    </userAuthContext.Provider>
+  );
 }
 
-
-export function useUserAuth(){
-  return useContext(userAuthContext)
+export function useUserAuth() {
+  return useContext(userAuthContext);
 }

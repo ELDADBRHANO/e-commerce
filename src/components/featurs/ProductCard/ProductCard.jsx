@@ -4,7 +4,6 @@ import { BsCartPlus } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 
 const ProductCard = ({ data}) => {
-  
   let { image, price, title } = data;
   const [theme] = useThemeHook();
   const { addItem } = useCart();

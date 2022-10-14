@@ -16,6 +16,7 @@ const Home = () => {
 
   useEffect(() => {
    getResponse().then((res)=>setProductData(res))
+
   }, []);
   return (
     <Container className="container-fluid">

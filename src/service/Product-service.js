@@ -6,12 +6,13 @@ const options = {
   },
 };
 
+const store = "https://cheapshark-game-deals.p.rapidapi.com/stores"
 async function productResponse() {
   try {
     return await fetch(
-      "https://cheapshark-game-deals.p.rapidapi.com/stores",
+      store,
       options
-    ).then((response) => response.json())
+    ).then((response) => response.json()).then((res)=>console.log(res))
   } catch (error) {
     console.error(error);
   }

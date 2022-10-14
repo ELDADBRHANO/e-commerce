@@ -12,6 +12,7 @@ import { Link, useNavigate } from "@reach/router";
 import { useCart } from "react-use-cart";
 import { ThemeContext } from "../../../GlobalComponents/ThemeProvider";
 import { useUserAuth } from "../../context/user-context";
+import { Avatar, Box,  } from "@mui/material";
 const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
@@ -40,6 +41,7 @@ const Header = () => {
       style={{ width: "100%", position: "fixed", zIndex: 100 }}
     >
       <Container className="ms-auto">
+
         <>
           <OverlayTrigger
             trigger="click"
@@ -48,16 +50,19 @@ const Header = () => {
             overlay={
               <Popover id={`popover-positioned-bottom`}>
                 <Popover.Body>
-                  <strong>
-                    {user && user.email ||user && user.displayName}
-                  </strong>{" "}
-                  Check this info.
+                  <Box>
+
+                {`Hello ${user?.displayName}`}
+                  </Box> <br />
                   <Button onClick={handleLogOut} variant="secondary">Log out </Button>
                 </Popover.Body>
               </Popover>
             }
           >
-            <Button variant="secondary">{`Hello ${user?.displayName}`}</Button>
+            <Box variant="secondary">
+            <Avatar alt="Remy Sharp" src={user&&user.photoURL||user && user.email} />
+            
+            </Box>
           </OverlayTrigger>
         </>
 

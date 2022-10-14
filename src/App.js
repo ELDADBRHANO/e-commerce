@@ -13,6 +13,7 @@ function App() {
       className={theme ? "bg=black" : "bg-light-2"}
       style={{ height: "100vh", overflowY: "auto" }}
     >
+  
       <Router>
         <Login path="/" />
         <SignUp path="signup"/>
