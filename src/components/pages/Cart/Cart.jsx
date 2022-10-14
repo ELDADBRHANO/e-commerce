@@ -1,8 +1,11 @@
-import React from "react";
-import { Button, Container, Col, Row, Table } from "react-bootstrap";
+import { Button, Container, Col, Row, Table, Card } from "react-bootstrap";
 import { useCart } from "react-use-cart";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
+import Header from "../Header/Header";
+import { Link } from "@reach/router";
+import { Typography } from "@mui/material";
+
 
 const Cart = () => {
   const [theme] = useThemeHook();
@@ -15,13 +18,22 @@ const Cart = () => {
     emptyCart,
   } = useCart();
   return (
-    <Container className="py-4 mt-5">
+    <Container className="">
+      <Row className="justify-content-center">
+        <Header/>
+      </Row>
       <h1
         className={`${
           theme ? "text-light" : "text-light-primary"
         } my-5 text-center`}
       >
-        {isEmpty ? "Your Cart is Empty" : "The Cart"}
+        {isEmpty ?<Link style={{textDecoration:'none'}} to="/Home">
+        <div class="card mt-5 pt-5">
+  <div class="card-body">
+    <p class="card-text">Your Cart is Empty, ADD some products.</p>
+  </div>
+</div>
+        </Link>  : "Your Cart"}
       </h1>
       <Row className="justify-content-center">
         <Table
@@ -68,7 +80,7 @@ const Cart = () => {
                       {item.title}
                     </h6>
                   </td>
-                  <td>Rs. {item.price}</td>
+                  <td>{item.price} $</td>
                   <td>Quantity ({item.quantity})</td>
                   <td>
                     <Button
@@ -100,6 +112,10 @@ const Cart = () => {
             })}
           </tbody>
         </Table>
+
+
+
+        
         {!isEmpty && (
           <Row
             style={{ position: "fixed", bottom: 0 }}
@@ -108,7 +124,7 @@ const Cart = () => {
             } justify-content-center w-100`}
           >
             <Col className="py-2">
-              <h4>Total Price: Rs. {cartTotal}</h4>
+              <h4>Total Price: {cartTotal} $ </h4>
             </Col>
             <Col className="p-0" md={4}>
               <Button
@@ -121,7 +137,7 @@ const Cart = () => {
               </Button>
               <Button variant="success" className="m-2">
                 <BsCartCheck size="1.7rem" />
-                Clear Cart
+                Checkout
               </Button>
             </Col>
           </Row>
@@ -132,3 +148,12 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+
+
+
+
+
+
+

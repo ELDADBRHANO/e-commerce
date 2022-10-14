@@ -1,25 +1,29 @@
-import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useThemeHook } from './GlobalComponents/ThemeProvider';
-import Header from './components/Header/Header';
-import { Router } from '@reach/router';
-
-import Home from './components/pages/Home/Home';
-import Cart from './components/pages/Cart/Cart';
-
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useThemeHook } from "./GlobalComponents/ThemeProvider";
+import { Router } from "@reach/router";
+import { Cart, Header, Home, Product } from "./components";
+import Login from "./components/featurs/Login/Login";
+import SignUp from "./components/featurs/SignUp/SignUp";
 
 function App() {
-  const [theme]= useThemeHook()
+  const [theme] = useThemeHook();
   return (
-    <main className={theme? 'bg=black': 'bg-light-2'} style={{height:'100vh',overflowT:'auto'}}>
-      <Header/>
+    <main
+      className={theme ? "bg=black" : "bg-light-2"}
+      style={{ height: "100vh", overflowY: "auto" }}
+    >
+  
       <Router>
-        <Home path="/"/>
-        <Cart path="/cart"/>
+        <Login path="/" />
+        <SignUp path="signup"/>
+        <Home path="Home"/>
+        <Cart path="cart" />
       </Router>
     </main>
   );
 }
 
 export default App;
+
+
