@@ -1,7 +1,10 @@
-import { Button, Container, Col, Row, Table } from "react-bootstrap";
+import { Button, Container, Col, Row, Table, Card } from "react-bootstrap";
 import { useCart } from "react-use-cart";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
+import Header from "../Header/Header";
+import { Link } from "@reach/router";
+import { Typography } from "@mui/material";
 
 
 const Cart = () => {
@@ -15,13 +18,22 @@ const Cart = () => {
     emptyCart,
   } = useCart();
   return (
-    <Container className="py-4">
+    <Container className="">
+      <Row className="justify-content-center">
+        <Header/>
+      </Row>
       <h1
         className={`${
           theme ? "text-light" : "text-light-primary"
         } my-5 text-center`}
       >
-        {isEmpty ? "Your Cart is Empty" : "Your Cart"}
+        {isEmpty ?<Link style={{textDecoration:'none'}} to="/Home">
+        <div class="card mt-5 pt-5">
+  <div class="card-body">
+    <p class="card-text">Your Cart is Empty, ADD some products.</p>
+  </div>
+</div>
+        </Link>  : "Your Cart"}
       </h1>
       <Row className="justify-content-center">
         <Table

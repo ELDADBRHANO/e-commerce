@@ -1,3 +1,7 @@
-#container{
-  height: 100vh;
+#form-div{
+  width: 30vw;
+}
+
+#from-Card{
+  background-color: white;
 }

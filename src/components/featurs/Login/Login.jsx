@@ -1,14 +1,20 @@
+import './Login.css';
 import { Link, useNavigate } from "@reach/router";
 import { useState } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Button, Card, Container } from "react-bootstrap";
 import { useUserAuth } from "../../context/user-context";
+ import {GoogleButton} from 'react-google-button'
+import { async } from '@firebase/util';
+import { Typography } from '@mui/material';
+
+
 
 export default function Login() {
   const [email,setEmail]= useState("");
   const [password,setpassword]= useState("");
-  const {logIn} = useUserAuth();
+  const {logIn,googleSignIn} = useUserAuth();
   const [error,setError] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSumbit = async (e)=>{
     e.preventDefault();
     setError("")
@@ -19,43 +25,60 @@ export default function Login() {
       setError(error.message)
     }
   }
+  const handleGoogleSignIn =async(e)=>{
+    e.preventDefault()
+    try {
+      await googleSignIn()
+      navigate('/Home')
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   return(
-      <div className="mt-5">
+      <Container id="from-Card" className="mt-5 container-fluid h-100">
+        <div className="mt-5 d-flex justify-content-center">
+       <form onSubmit={handleSumbit} className="mt-5"><br />
+        <div>
+        <h3 className='text-center'>Log In</h3>
         {error&& <Alert variant="danger">{error}</Alert>}
-       <form onSubmit={handleSumbit} className="mt-5">
-        <h3>Log In</h3>
-        <div className="mt-5">
-          <label>Email address</label>
+        </div>
+          <div className="mt-5 ">
+            <div className='d-grid justify-content-center'>
+  <label>Email address</label>
           <input onChange={(e)=>setEmail(e.target.value)}
             type="email"
             className="form-control"
             placeholder="Enter email"
           />
-        </div>
-        <div className="mt-5">
           <label>Password</label>
           <input onChange={(e)=>setpassword(e.target.value)}
             type="password"
-            className="form-control"
+            className="form-control "
             placeholder="Enter password"
-          />
-        </div>
-        <div className="d-grid">
-          {/* <Link to="/Home"> */}
-              <button type="submit" className="btn btn-primary">
+            />
+            </div>
+        
+            </div>
+        <div className="d-grid d-flex justify-content-center mt-3">
+              <Button type="submit" className=" btn btn-primary">
             Log In
-          </button>
-          {/* </Link> */}
-      
+          </Button>
+
         </div>
-        <Link to="signup">
-        <p className="forgot-password text-right">
-          Want to registered? sign up!
-        </p>
-        </Link>
- 
+        <div className="d-grid d-flex justify-content-center">
+          <GoogleButton onClick={handleGoogleSignIn} className='g-btn justify-content-center mt-3' type='dark'/>
+        </div>
       </form>
-    </div>
+            </div>
+        <Link  style={{textDecoration: 'none'}}  to="signup">
+          <Container  className="forgot-password text-right">
+            <Typography className='text-center mt-3' style={{color:"green"}} variant='h6'>
+          Want to registered? sign up!
+        </Typography>
+          </Container>
+        
+        </Link>
+    </Container>
   )
 
 }

@@ -1,18 +1,34 @@
 import { useContext, useState, useEffect } from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
-import { BiSun, BiMoon, BiCart,BiUserCircle } from "react-icons/bi";
-import { Link } from "@reach/router";
+import {
+  Container,
+  Navbar,
+  Nav,
+  Button,
+  OverlayTrigger,
+  Popover,
+} from "react-bootstrap";
+import { BiSun, BiMoon, BiCart } from "react-icons/bi";
+import { Link, useNavigate } from "@reach/router";
 import { useCart } from "react-use-cart";
 import { ThemeContext } from "../../../GlobalComponents/ThemeProvider";
-
+import { useUserAuth } from "../../context/user-context";
 const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
-
+  const { isEmpty, totalItems } = useCart();
+  const { user,logOut} = useUserAuth();
+  const navigate = useNavigate()
   useEffect(() => {
     setThemeMode(darkMode);
   }, [darkMode]);
-  const { isEmpty, totalItems } = useCart();
+  const handleLogOut = async ()=>{
+    try {
+      await logOut();
+      navigate('/')
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   return (
     <Navbar
       collapseOnSelect
@@ -24,7 +40,28 @@ const Header = () => {
       style={{ width: "100%", position: "fixed", zIndex: 100 }}
     >
       <Container className="ms-auto">
-        <Link to="/">
+        <>
+          <OverlayTrigger
+            trigger="click"
+            key="bottom"
+            placement="bottom"
+            overlay={
+              <Popover id={`popover-positioned-bottom`}>
+                <Popover.Body>
+                  <strong>
+                    {user && user.email ||user && user.displayName}
+                  </strong>{" "}
+                  Check this info.
+                  <Button onClick={handleLogOut} variant="secondary">Log out </Button>
+                </Popover.Body>
+              </Popover>
+            }
+          >
+            <Button variant="secondary">{`Hello ${user?.displayName}`}</Button>
+          </OverlayTrigger>
+        </>
+
+        <Link to={user?'/Home':'/'}>
           <Navbar.Brand
             className={darkMode ? "text-dark-primary" : "text-light-primary"}
           >

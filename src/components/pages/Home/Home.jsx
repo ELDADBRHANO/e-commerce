@@ -18,8 +18,11 @@ const Home = () => {
    getResponse().then((res)=>setProductData(res))
   }, []);
   return (
-    <Container className="py-4">
+    <Container className="container-fluid">
       <Row className="justify-content-center">
+        <Header/>
+      </Row>
+      <Row className="justify-content-center mt-5">
       <img src="/images/commercial.gif" alt="commercial" />
         <Col xs={10} md={7} lg={6} xl={4} className="mb-3 mx-auto text-center">
           <Typography variant="h6" className={theme ? "text-light my-5" : "text-black my-5"}>
