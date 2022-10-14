@@ -6,6 +6,7 @@ import SearchFilter from "react-filter-search";
 import ProductCard from "../../featurs/ProductCard/ProductCard";
 import getResponse from "../../../service/productCard.service";
 import { Typography } from "@mui/material";
+import Header from "../Header/Header";
 
 const Home = () => {
   const [theme] = useThemeHook();

@@ -1,16 +1,36 @@
-import { createContext,useEffect,useState } from "react";
+import { createContext,useContext,useEffect,useState } from "react";
+import {createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+} from 'firebase/auth'
+import { auth } from "../../firebase";
 
-export const userContext = createContext();
 
-export default function UserProvider({children}) {
-  const [userData, setUserData] = useState([]);
-  useEffect(() => {
-    localStorage.setItem('dataKey', JSON.stringify(userData));
-  }, [userData]);
-  return(
-    <userContext.Provider value={{userData,setUserData}}>
-      {/* {console.log(userContext)} */}
-      {children}
-    </userContext.Provider>
-  )
+
+  const userAuthContext = createContext();
+
+export default function UserAuthContextProvider({children}) {
+  const [user, setUser]= useState()
+  function signUp(email,password){
+    return createUserWithEmailAndPassword(auth,email,password)
+  }
+  function logIn(email,password){
+    return signInWithEmailAndPassword(auth,email,password)
+  }
+
+  useEffect(()=>{
+   const unsbscribe=  onAuthStateChanged(auth,(currentUser)=>{
+      setUser(currentUser)
+    })
+    return ()=>{
+      unsbscribe()
+    }
+  },[])
+  return <userAuthContext.Provider value={{user, signUp,logIn}}>{children}</userAuthContext.Provider>
+}
+
+
+export function useUserAuth(){
+  return useContext(userAuthContext)
 }

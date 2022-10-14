@@ -3,7 +3,6 @@ import { useCart } from "react-use-cart";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 
-// import {Container,Typography,Button, Grid} from '@mui/material';
 
 const Cart = () => {
   const [theme] = useThemeHook();
@@ -101,6 +100,10 @@ const Cart = () => {
             })}
           </tbody>
         </Table>
+
+
+
+        
         {!isEmpty && (
           <Row
             style={{ position: "fixed", bottom: 0 }}
@@ -133,10 +136,6 @@ const Cart = () => {
 };
 
 export default Cart;
-
-
-
-
 
 
 

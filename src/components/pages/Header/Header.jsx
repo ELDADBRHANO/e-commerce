@@ -56,17 +56,6 @@ const Header = () => {
               )}
               <span style={{ marginLeft: !isEmpty ? "-13px" : 0 }}></span>
             </Link>
-            
-
-            <Link
-              to="/login"
-              className={`${
-                darkMode ? "text-dark-primary" : "text-light-primary"
-              } d-flex align-items-center`}
-            >
-              <BiUserCircle size="2rem" />
-              <span style={{ marginLeft: !isEmpty ? "-13px" : 0 }}></span>
-            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

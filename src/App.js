@@ -4,22 +4,21 @@ import { useThemeHook } from "./GlobalComponents/ThemeProvider";
 import { Router } from "@reach/router";
 import { Cart, Header, Home, Product } from "./components";
 import Login from "./components/featurs/Login/Login";
-import { useEffect } from "react";
+import SignUp from "./components/featurs/SignUp/SignUp";
+
 function App() {
   const [theme] = useThemeHook();
-  useEffect(()=>{
-    <Login/>
-  },[])
   return (
     <main
       className={theme ? "bg=black" : "bg-light-2"}
       style={{ height: "100vh", overflowY: "auto" }}
     >
-        <Header />
+      <Header />
       <Router>
-       <Home path="home" />
-        <Login path='/'/>
-        <Cart path="/cart" />
+        <Login path="/" />
+        <SignUp path="signup"/>
+        <Home path="Home"/>
+        <Cart path="cart" />
       </Router>
     </main>
   );

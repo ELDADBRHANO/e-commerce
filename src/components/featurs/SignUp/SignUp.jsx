@@ -3,33 +3,35 @@ import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useUserAuth } from "../../context/user-context";
 
-export default function Login() {
+
+function SignUp() {
   const [email,setEmail]= useState("");
   const [password,setpassword]= useState("");
-  const {logIn} = useUserAuth();
+  const {signUp} = useUserAuth();
   const [error,setError] = useState("");
   const navigate = useNavigate()
   const handleSumbit = async (e)=>{
     e.preventDefault();
     setError("")
     try {
-      await logIn(email,password)
-        navigate("Home")
+      await signUp(email,password)
+    navigate("/")
     } catch (error) {
       setError(error.message)
     }
   }
-  return(
-      <div className="mt-5">
-        {error&& <Alert variant="danger">{error}</Alert>}
+  return (
+    <div className="mt-5">
+      {error && <Alert variant="danger">{error}</Alert> }
        <form onSubmit={handleSumbit} className="mt-5">
-        <h3>Log In</h3>
+        <h3>Sign Up</h3>
         <div className="mt-5">
           <label>Email address</label>
           <input onChange={(e)=>setEmail(e.target.value)}
             type="email"
             className="form-control"
             placeholder="Enter email"
+            
           />
         </div>
         <div className="mt-5">
@@ -38,24 +40,24 @@ export default function Login() {
             type="password"
             className="form-control"
             placeholder="Enter password"
+       
           />
         </div>
         <div className="d-grid">
-          {/* <Link to="/Home"> */}
-              <button type="submit" className="btn btn-primary">
-            Log In
+          <button type="submit" className="btn btn-primary">
+            Sign Up
           </button>
-          {/* </Link> */}
-      
         </div>
-        <Link to="signup">
+        <Link to="/">
         <p className="forgot-password text-right">
-          Want to registered? sign up!
+          Already registered Log in?
         </p>
         </Link>
  
       </form>
     </div>
-  )
-
+   
+  );
 }
+
+export default SignUp;
