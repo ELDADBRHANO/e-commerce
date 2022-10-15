@@ -1,7 +1,7 @@
 import "./Login.css";
 import { Link, useNavigate } from "@reach/router";
 import { useState } from "react";
-import { Alert, Button, Card, Container } from "react-bootstrap";
+import { Alert, Button,  Container } from "react-bootstrap";
 import { useUserAuth } from "../../context/user-context";
 import { GoogleButton } from "react-google-button";
 import { Typography } from "@mui/material";

@@ -7,6 +7,7 @@ import ProductCard from "../../featurs/ProductCard/ProductCard";
 import getResponse from "../../../service/productCard.service";
 import { Typography } from "@mui/material";
 import Header from "../Header/Header";
+import Footer from "../../featurs/Footer/Footer";
 
 const Home = () => {
   const [theme] = useThemeHook();
@@ -24,7 +25,7 @@ const Home = () => {
         <Header/>
       </Row>
       <Row className="justify-content-center mt-5">
-      <img src="/images/commercial.gif" alt="commercial" />
+      <img className="mt-5 img-fluid" src="/images/commercial.gif" alt="commercial" />
         <Col xs={10} md={7} lg={6} xl={4} className="mb-3 mx-auto text-center">
           <Typography variant="h6" className={theme ? "text-light my-5" : "text-black my-5"}>
             Search products
@@ -60,6 +61,10 @@ const Home = () => {
             </Row>
           )}
         />
+      </Row>
+      
+      <Row className=" justify-content-center">
+        <Footer/>
       </Row>
     </Container>
   );

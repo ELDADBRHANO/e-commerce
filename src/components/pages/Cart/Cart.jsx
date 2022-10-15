@@ -5,7 +5,7 @@ import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
 import { Typography } from "@mui/material";
-
+import './Cart.css';
 
 const Cart = () => {
   const [theme] = useThemeHook();
@@ -28,9 +28,12 @@ const Cart = () => {
         } my-5 text-center`}
       >
         {isEmpty ?<Link style={{textDecoration:'none'}} to="/Home">
-        <div class="card mt-5 pt-5">
-  <div class="card-body">
-    <p class="card-text">Your Cart is Empty, ADD some products.</p>
+        <div style={{height:'100vh'}} className="card mt-5 pt-5">
+  <div className="card-body">
+    <p className="animate-charcter card-text">Your Cart is Empty, ADD some products.</p>
+    <div>
+    <Button style={{outline:'none'}} className="animate-charcter">Back to store</Button>
+    </div>
   </div>
 </div>
         </Link>  : "Your Cart"}
@@ -112,10 +115,6 @@ const Cart = () => {
             })}
           </tbody>
         </Table>
-
-
-
-        
         {!isEmpty && (
           <Row
             style={{ position: "fixed", bottom: 0 }}
