@@ -22,7 +22,7 @@ const Header = () => {
   const navigate = useNavigate()
   useEffect(() => {
     setThemeMode(darkMode);
-  }, [darkMode]);
+  }, );
   const handleLogOut = async ()=>{
     try {
       await logOut();
@@ -41,7 +41,7 @@ const Header = () => {
       style={{ width: "100%", position: "fixed", zIndex: 100 }}
     >
       <Container className="ms-auto">
-        <Container className="d-flex" variant="secondary">
+        <Container className="d-flex " variant="secondary">
           <OverlayTrigger
             trigger="click"
             key="bottom"
@@ -58,7 +58,7 @@ const Header = () => {
               </Popover>
             }
           >
-            <Avatar alt="user" src={user&&user.photoURL||user && user.email} />
+            <Avatar alt="user" src={(user?.photoURL&&user?.photoURL)||(user?.photoURL && user?.photoURL)} />
           </OverlayTrigger>
             </Container>
         

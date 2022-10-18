@@ -2,10 +2,11 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useThemeHook } from "./GlobalComponents/ThemeProvider";
 import { Router } from "@reach/router";
-import { Cart, Header, Home, Product } from "./components";
+import { Cart, Home } from "./components";
 import Login from "./components/featurs/Login/Login";
 import SignUp from "./components/featurs/SignUp/SignUp";
 import NotFound from "./components/pages/NotFound/NotFound";
+import CheckOut from "./components/featurs/CheckOut/CheckOut";
 
 function App() {
   const [theme] = useThemeHook();
@@ -19,6 +20,7 @@ function App() {
         <Login path="/" />
         <SignUp path="signup"/>
         <Home path="Home"/>
+        <CheckOut path="CheckOut"/>
         <Cart path="cart" />
         <NotFound default/>
       </Router>

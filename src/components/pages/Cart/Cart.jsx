@@ -1,11 +1,11 @@
-import { Button, Container, Col, Row, Table, Card } from "react-bootstrap";
+import { Button, Container, Col, Row, Table} from "react-bootstrap";
 import { useCart } from "react-use-cart";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
-import { Typography } from "@mui/material";
 import './Cart.css';
+
 
 const Cart = () => {
   const [theme] = useThemeHook();
@@ -134,10 +134,12 @@ const Cart = () => {
                 <BsCartX size="1.7rem" />
                 Clear Cart
               </Button>
+              <Link to="/CheckOut">
               <Button variant="success" className="m-2">
                 <BsCartCheck size="1.7rem" />
                 Checkout
               </Button>
+              </Link>
             </Col>
           </Row>
         )}
