@@ -29,7 +29,8 @@ export default function Footer() {
               </h6>
               <p>
                 Here you can find clothes,remotes,TV'S, and more.
-                the prices are for ALL!
+                the prices are for ALL!<br/>
+                We allways working for you to have it ALL!
               </p>
             </MDBCol>
 

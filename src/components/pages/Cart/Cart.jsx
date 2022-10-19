@@ -38,7 +38,7 @@ const Cart = () => {
     </div>
   </div>
 </div>
-        </Link>  : <Container className="mt-5">Your Cart</Container>}
+        </Link>  : <Container className="pt-5">Your Cart</Container>}
       </h1>
       <Row className="justify-content-center">
         <Table
@@ -66,8 +66,8 @@ const Cart = () => {
                     >
                       <div style={{ padding: ".5rem" }}>
                         <img
-                          src={item.image}
-                          style={{ width: "4rem" }}
+                          src={item.images}
+                          style={{ width: "15rem" }}
                           alt={item.title}
                         />
                       </div>

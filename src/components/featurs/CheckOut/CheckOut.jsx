@@ -1,6 +1,6 @@
 
 import { Row } from "react-bootstrap";
-import Header, { handleTotalItems } from "../../pages/Header/Header";
+import Header from "../../pages/Header/Header";
 import Footer from "../Footer/Footer";
 import "./CheckOut.css";
 
@@ -15,6 +15,8 @@ import { Link } from "@reach/router";
 function CheckOut() {
 
   return (
+    <>
+    
       <div>
       <Row className="justify-content-center">
         <Header />
@@ -110,7 +112,7 @@ function CheckOut() {
                   </div>
                 </div>
 
-                <div className="container d-flex mt-3 justify-content-center">
+                <div className="container d-flex mt-3 justify-content-center ">
                   <button
                     type="button"
                     className="btn btn-primary"
@@ -137,7 +139,7 @@ function CheckOut() {
                       <label htmlFor="ccn">Credit Card Number:</label><br />
                       <Input required name="ccn" type="tel" inputMode="numeric"  pattern="[0-9\s]{13,19}" autoComplete="cc-number" maxLength="19" placeholder="xxxx xxxx xxxx xxxx"/><br />
                       <label htmlFor="CVV">Valid Thru</label><br />
-                        <Input required inputMode="numeric" maxLength="3" name="CVV" type="number"/><br />
+                        <Input required inputMode="numeric" maxLength="3" name="CVV" type="text"/><br />
                       <label htmlFor="ccn">CVV:</label><br />
                         <Input required maxLength="3"  type="text"/><br />
                       </div>
@@ -162,8 +164,12 @@ function CheckOut() {
           </div>
         </div>
       </div>
+    </div>
+    <div className="mt-5">
+
       <Footer />
     </div>
+    </>
   )
   
   
