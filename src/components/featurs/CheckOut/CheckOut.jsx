@@ -1,13 +1,21 @@
-import { Button, Row } from "react-bootstrap";
-import Header from "../../pages/Header/Header";
+
+import { Row } from "react-bootstrap";
+import Header, { handleTotalItems } from "../../pages/Header/Header";
 import Footer from "../Footer/Footer";
 import "./CheckOut.css";
 
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js";
 import { Input } from "@mui/material";
+import { Link } from "@reach/router";
+
+
+
+
+
 function CheckOut() {
+
   return (
-    <div>
+      <div>
       <Row className="justify-content-center">
         <Header />
       </Row>
@@ -55,7 +63,7 @@ function CheckOut() {
                 <div className="col-md-6">
                   <div className="form-group mb-3">
                     <label> Email Address</label>
-                    <input type="email" name="email" className="form-control" />
+                    <input  type="email" name="email" className="form-control" />
                   </div>
                 </div>
                 <div className="col-md-12">
@@ -102,10 +110,10 @@ function CheckOut() {
                   </div>
                 </div>
 
-                <div class="container d-flex mt-3 justify-content-center">
+                <div className="container d-flex mt-3 justify-content-center">
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     data-bs-toggle="modal"
                     data-bs-target="#myModal"
                   >
@@ -113,33 +121,38 @@ function CheckOut() {
                   </button>
                 </div>
 
-                <div class="modal" id="myModal">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Payment</h4>
+                <div className="modal" id="myModal">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h4 className="modal-title">Payment</h4>
                         <button
                           type="button"
-                          class="btn-close"
+                          className="btn-close"
                           data-bs-dismiss="modal"
                         ></button>
                       </div>
 
-                      <div class="modal-body">
-                        <Input type="text"/><br />
-                        <Input type="number"/><br />
-                        <Input type="text"/><br />
+                      <div className="modal-body d-flex">
+                      <label htmlFor="ccn">Credit Card Number:</label><br />
+                      <Input required name="ccn" type="tel" inputMode="numeric"  pattern="[0-9\s]{13,19}" autoComplete="cc-number" maxLength="19" placeholder="xxxx xxxx xxxx xxxx"/><br />
+                      <label htmlFor="CVV">Valid Thru</label><br />
+                        <Input required inputMode="numeric" maxLength="3" name="CVV" type="number"/><br />
+                      <label htmlFor="ccn">CVV:</label><br />
+                        <Input required maxLength="3"  type="text"/><br />
                       </div>
 
-                      <div class="modal-footer">
+                      <div className="modal-footer">
                         <img id="credit" src="images/credit.png" alt="" />
+                        <Link to="/Home">
                         <button
+                        
                           type="button"
-                          class="btn btn-danger"
+                          className="btn btn-primary"
                           data-bs-dismiss="modal"
                         >
-                          Close
-                        </button>
+                          Sumbit
+                        </button></Link>
                       </div>
                     </div>
                   </div>
@@ -151,6 +164,8 @@ function CheckOut() {
       </div>
       <Footer />
     </div>
-  );
+  )
+  
+  
 }
 export default CheckOut;

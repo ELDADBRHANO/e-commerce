@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
@@ -10,9 +10,9 @@ import Header from "../Header/Header";
 import Footer from "../../featurs/Footer/Footer";
 
 const Home = () => {
-  const [theme] = useThemeHook();
   const [searchInput, setSearchInput] = useState("");
   const [productData, setProductData] = useState([]);
+  const [theme] = useThemeHook();
  
 
   useEffect(() => {
@@ -20,6 +20,8 @@ const Home = () => {
 
   }, []);
   return (
+    <>
+
     <Container className="container-fluid">
       <Row className="justify-content-center">
         <Header/>
@@ -62,11 +64,9 @@ const Home = () => {
           )}
         />
       </Row>
-      
-      <Row className=" justify-content-center">
-        <Footer/>
-      </Row>
     </Container>
+        <Footer/>
+    </>
   );
 };
 

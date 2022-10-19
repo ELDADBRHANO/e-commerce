@@ -2,3 +2,13 @@
   width: 10vw;
   height: 20vh;
 }
+
+
+
+@media screen and (max-width: 550px) {
+  #credit{
+    width: 30vw;
+    height: 20vh;
+  }
+  
+}

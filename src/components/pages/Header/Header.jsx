@@ -18,6 +18,7 @@ const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
   const { isEmpty, totalItems } = useCart();
+  
   const { user,logOut} = useUserAuth();
   const navigate = useNavigate()
   useEffect(() => {
@@ -105,5 +106,6 @@ const Header = () => {
 };
 
 export default Header;
+
 
 

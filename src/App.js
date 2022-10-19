@@ -10,6 +10,7 @@ import CheckOut from "./components/featurs/CheckOut/CheckOut";
 
 function App() {
   const [theme] = useThemeHook();
+
   return (
     <main
       className={theme ? "bg=black" : "bg-light-2"}

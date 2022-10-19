@@ -18,6 +18,8 @@ const Cart = () => {
     emptyCart,
   } = useCart();
   return (
+    <>
+    
     <Container className="">
       <Row className="justify-content-center">
         <Header/>
@@ -29,14 +31,14 @@ const Cart = () => {
       >
         {isEmpty ?<Link style={{textDecoration:'none'}} to="/Home">
         <div style={{height:'100vh'}} className="card mt-5 pt-5">
-  <div className="card-body">
+  <div className="card-body mt-5">
     <p className="animate-charcter card-text">Your Cart is Empty, ADD some products.</p>
     <div>
     <Button style={{outline:'none'}} className="animate-charcter">Back to store</Button>
     </div>
   </div>
 </div>
-        </Link>  : "Your Cart"}
+        </Link>  : <Container className="mt-5">Your Cart</Container>}
       </h1>
       <Row className="justify-content-center">
         <Table
@@ -145,6 +147,7 @@ const Cart = () => {
         )}
       </Row>
     </Container>
+    </>
   );
 };
 
