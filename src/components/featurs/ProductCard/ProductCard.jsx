@@ -33,7 +33,7 @@ const ProductCard = ({ data}) => {
         }}
       >
         <div style={{ width: "15rem" }}>
-          <Card.Img variant="top" src={images[2]} className="img-fluid" />
+          <Card.Img variant="top" src={images[1]} className="img-fluid" />
         </div>
       </div>
       <Card.Body>

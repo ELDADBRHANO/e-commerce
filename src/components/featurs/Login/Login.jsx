@@ -92,13 +92,13 @@ export default function Login() {
       </div>
       <Link style={{ textDecoration: "none" }} to="signup">
         <Container className="forgot-password text-right">
-          <Typography
+          <Button
             className="text-center mt-3"
-            style={{ color: "green" }}
+            style={{ color: "black" }}
             variant="h6"
           >
             Want to registered? sign up!
-          </Typography>
+          </Button>
         </Container>
       </Link>
     </Container>

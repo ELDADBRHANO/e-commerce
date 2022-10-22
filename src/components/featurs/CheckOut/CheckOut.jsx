@@ -13,7 +13,6 @@ import { Link } from "@reach/router";
 
 
 function CheckOut() {
-
   return (
     <>
     
@@ -148,7 +147,6 @@ function CheckOut() {
                         <img id="credit" src="images/credit.png" alt="" />
                         <Link to="/Home">
                         <button
-                        
                           type="button"
                           className="btn btn-primary"
                           data-bs-dismiss="modal"
