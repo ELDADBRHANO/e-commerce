@@ -12,8 +12,8 @@ function App() {
   const [theme] = useThemeHook();
 
   return (
-    <main
-      className={theme ? "bg=black" : "bg-light-2"}
+    <main data-testid="main"
+      className={theme ? "bg-black" : "bg-light"}
       style={{ height: "100vh", overflowY: "auto" }}
     >
   

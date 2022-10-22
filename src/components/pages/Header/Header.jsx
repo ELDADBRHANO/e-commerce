@@ -52,9 +52,9 @@ const Header = () => {
                 <Popover.Body>
                   <Box>
 
-                {`Hello ${user?.displayName}`}
+                {`Hello ${(user?.displayName)||(user?.email)}`}
                   </Box> <br />
-                  <Button onClick={handleLogOut} variant="secondary">Log out </Button>
+                  <Button onClick={handleLogOut} variant="secondary">Log Out</Button>
                 </Popover.Body>
               </Popover>
             }
@@ -64,8 +64,6 @@ const Header = () => {
             </Container>
         
 
-
-        
         <Link to={user?'/Home':'/'}>
           <Navbar.Brand
             className={darkMode ? "text-dark-primary" : "text-light-primary"}

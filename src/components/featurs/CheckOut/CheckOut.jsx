@@ -1,9 +1,7 @@
-
 import { Row } from "react-bootstrap";
 import Header from "../../pages/Header/Header";
 import Footer from "../Footer/Footer";
 import "./CheckOut.css";
-
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js";
 import { Input } from "@mui/material";
 import { Link } from "@reach/router";
