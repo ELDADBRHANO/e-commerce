@@ -17,8 +17,7 @@ import { Avatar, Box,  } from "@mui/material";
 const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
-  const { isEmpty, totalItems } = useCart();
-  
+  const { isEmpty, totalItems,emptyCart } = useCart();
   const { user,logOut} = useUserAuth();
   const navigate = useNavigate()
   useEffect(() => {
@@ -27,6 +26,7 @@ const Header = () => {
   const handleLogOut = async ()=>{
     try {
       await logOut();
+      emptyCart()
       navigate('/')
     } catch (error) {
       console.log(error.message);

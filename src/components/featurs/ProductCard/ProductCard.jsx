@@ -15,7 +15,6 @@ const ProductCard = ({ data}) => {
     addItem(data);
   };
   return (
-    
     <Card 
       style={{ width: "18rem", height: "auto" }}
       className={`${
@@ -82,3 +81,10 @@ const ProductCard = ({ data}) => {
 };
 
 export default ProductCard;
+
+
+
+
+
+
+    
