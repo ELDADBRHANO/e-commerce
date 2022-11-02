@@ -14,7 +14,7 @@ function App() {
       className={theme ? "bg-black" : "bg-light"}
       style={{ height: "100vh", overflowY: "auto" }}
     >
-      <Router basename="/e-commerce">
+      <Router basename="e-commerce">
          <Login path="/" />
         <Login path="/e-commerce" />
         <SignUp path="signup"/>
