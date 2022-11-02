@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
@@ -7,11 +7,12 @@ import ProductCard from "../../featurs/ProductCard/ProductCard";
 import getResponse from "../../../service/productCard.service";
 import { Typography } from "@mui/material";
 import Header from "../Header/Header";
+import Footer from "../../featurs/Footer/Footer";
 
 const Home = () => {
-  const [theme] = useThemeHook();
   const [searchInput, setSearchInput] = useState("");
   const [productData, setProductData] = useState([]);
+  const [theme] = useThemeHook();
  
 
   useEffect(() => {
@@ -19,12 +20,14 @@ const Home = () => {
 
   }, []);
   return (
+    <>
+
     <Container className="container-fluid">
       <Row className="justify-content-center">
         <Header/>
       </Row>
       <Row className="justify-content-center mt-5">
-      <img src="/images/commercial.gif" alt="commercial" />
+      <img className="mt-5 img-fluid" src="/images/commercial.gif" alt="commercial" />
         <Col xs={10} md={7} lg={6} xl={4} className="mb-3 mx-auto text-center">
           <Typography variant="h6" className={theme ? "text-light my-5" : "text-black my-5"}>
             Search products
@@ -62,6 +65,8 @@ const Home = () => {
         />
       </Row>
     </Container>
+        <Footer/>
+    </>
   );
 };
 

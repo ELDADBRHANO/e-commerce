@@ -13,58 +13,56 @@ import { useCart } from "react-use-cart";
 import { ThemeContext } from "../../../GlobalComponents/ThemeProvider";
 import { useUserAuth } from "../../context/user-context";
 import { Avatar, Box,  } from "@mui/material";
+
 const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
-  const { isEmpty, totalItems } = useCart();
+  const { isEmpty, totalItems,emptyCart } = useCart();
   const { user,logOut} = useUserAuth();
   const navigate = useNavigate()
   useEffect(() => {
     setThemeMode(darkMode);
-  }, [darkMode]);
+  }, );
   const handleLogOut = async ()=>{
     try {
       await logOut();
+      emptyCart()
       navigate('/')
     } catch (error) {
       console.log(error.message);
     }
   }
   return (
-    <Navbar
+    <Navbar 
       collapseOnSelect
-      expand="md"
       variant={darkMode ? "dark" : "light"}
-      className={
+      className={ 
         darkMode ? "bg-light-black border-bottom" : "bg-light border-bottom"
       }
       style={{ width: "100%", position: "fixed", zIndex: 100 }}
     >
       <Container className="ms-auto">
-
-        <>
+        <Container className="d-flex " variant="secondary">
           <OverlayTrigger
             trigger="click"
             key="bottom"
             placement="bottom"
             overlay={
-              <Popover id={`popover-positioned-bottom`}>
+              <Popover id="popover-positioned-bottom">
                 <Popover.Body>
                   <Box>
 
-                {`Hello ${user?.displayName}`}
+                {`Hello ${(user?.displayName)||(user?.email)}`}
                   </Box> <br />
-                  <Button onClick={handleLogOut} variant="secondary">Log out </Button>
+                  <Button onClick={handleLogOut} variant="secondary">Log Out</Button>
                 </Popover.Body>
               </Popover>
             }
           >
-            <Box variant="secondary">
-            <Avatar alt="Remy Sharp" src={user&&user.photoURL||user && user.email} />
-            
-            </Box>
+            <Avatar alt="user" src={(user?.photoURL&&user?.photoURL)||(user?.photoURL && user?.photoURL)} />
           </OverlayTrigger>
-        </>
+            </Container>
+        
 
         <Link to={user?'/Home':'/'}>
           <Navbar.Brand
@@ -106,3 +104,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+

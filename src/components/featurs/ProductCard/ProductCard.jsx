@@ -2,16 +2,19 @@ import { Button, Card } from "react-bootstrap";
 import { useCart } from "react-use-cart";
 import { BsCartPlus } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
-
+import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
 const ProductCard = ({ data}) => {
-  let { image, price, title } = data;
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  let { images, price, title,description } = data;
   const [theme] = useThemeHook();
   const { addItem } = useCart();
   const addToCart = () => {
     addItem(data);
   };
   return (
-    
     <Card 
       style={{ width: "18rem", height: "auto" }}
       className={`${
@@ -29,8 +32,8 @@ const ProductCard = ({ data}) => {
           marginBottom: "inherit",
         }}
       >
-        <div style={{ width: "9rem" }}>
-          <Card.Img variant="top" src={image} className="img-fluid" />
+        <div style={{ width: "15rem" }}>
+          <Card.Img variant="top" src={images[1]} className="img-fluid" />
         </div>
       </div>
       <Card.Body>
@@ -56,7 +59,23 @@ const ProductCard = ({ data}) => {
           Add to cart
         </Button>
       </Card.Body>
-      <div id="notify"></div>
+      <div className="mb-5">
+      <Button variant="primary" onClick={handleShow}>
+        More Info
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Description</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{description}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      </div>
     </Card>
   );
 };
@@ -64,3 +83,8 @@ const ProductCard = ({ data}) => {
 export default ProductCard;
 
 
+
+
+
+
+    

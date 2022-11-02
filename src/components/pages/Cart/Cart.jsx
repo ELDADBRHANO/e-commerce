@@ -1,10 +1,10 @@
-import { Button, Container, Col, Row, Table, Card } from "react-bootstrap";
+import { Button, Container, Col, Row, Table} from "react-bootstrap";
 import { useCart } from "react-use-cart";
 import { BsCartCheck, BsCartX } from "react-icons/bs";
 import { useThemeHook } from "../../../GlobalComponents/ThemeProvider";
 import Header from "../Header/Header";
 import { Link } from "@reach/router";
-import { Typography } from "@mui/material";
+import './Cart.css';
 
 
 const Cart = () => {
@@ -18,6 +18,8 @@ const Cart = () => {
     emptyCart,
   } = useCart();
   return (
+    <>
+    
     <Container className="">
       <Row className="justify-content-center">
         <Header/>
@@ -28,12 +30,15 @@ const Cart = () => {
         } my-5 text-center`}
       >
         {isEmpty ?<Link style={{textDecoration:'none'}} to="/Home">
-        <div class="card mt-5 pt-5">
-  <div class="card-body">
-    <p class="card-text">Your Cart is Empty, ADD some products.</p>
+        <div style={{height:'100vh'}} className="card mt-5 pt-5">
+  <div className="card-body mt-5">
+    <p className="animate-charcter card-text">Your Cart is Empty, ADD some products.</p>
+    <div>
+    <Button style={{outline:'none'}} className="animate-charcter">Back to store</Button>
+    </div>
   </div>
 </div>
-        </Link>  : "Your Cart"}
+        </Link>  : <Container className="pt-5">Your Cart</Container>}
       </h1>
       <Row className="justify-content-center">
         <Table
@@ -61,8 +66,8 @@ const Cart = () => {
                     >
                       <div style={{ padding: ".5rem" }}>
                         <img
-                          src={item.image}
-                          style={{ width: "4rem" }}
+                          src={item.images}
+                          style={{ width: "15rem" }}
                           alt={item.title}
                         />
                       </div>
@@ -112,10 +117,6 @@ const Cart = () => {
             })}
           </tbody>
         </Table>
-
-
-
-        
         {!isEmpty && (
           <Row
             style={{ position: "fixed", bottom: 0 }}
@@ -135,15 +136,18 @@ const Cart = () => {
                 <BsCartX size="1.7rem" />
                 Clear Cart
               </Button>
+              <Link to="/CheckOut">
               <Button variant="success" className="m-2">
                 <BsCartCheck size="1.7rem" />
                 Checkout
               </Button>
+              </Link>
             </Col>
           </Row>
         )}
       </Row>
     </Container>
+    </>
   );
 };
 

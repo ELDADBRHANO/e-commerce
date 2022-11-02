@@ -7,7 +7,7 @@ import {ThemeProvider}from './GlobalComponents/ThemeProvider';
 import { render } from 'react-dom';
 import {CartProvider} from 'react-use-cart';
 import UserAuthContextProvider from './components/context/user-context';
-
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 render(
   <React.StrictMode>
     <ThemeProvider>

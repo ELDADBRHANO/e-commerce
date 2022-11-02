@@ -26,7 +26,7 @@ function SignUp() {
        <form onSubmit={handleSumbit} className="mt-5">
         <h3 className="text-center">Sign Up</h3>
       {error && <Alert variant="danger">{error}</Alert> }
-        <div className="mt-5">
+        <div className="mt-4">
           <label>Email address</label>
           <input onChange={(e)=>setEmail(e.target.value)}
             type="email"
@@ -35,7 +35,7 @@ function SignUp() {
             
           />
         </div>
-        <div className="mt-5 ">
+        <div className="mt-4 ">
           <label>Password</label>
           <input onChange={(e)=>setpassword(e.target.value)}
             type="password"
@@ -44,7 +44,7 @@ function SignUp() {
        
           />
         </div>
-        <div className="mt-5">
+        <div className="mt-4">
           <label>Age</label>
           <input 
             type="number"
@@ -53,20 +53,20 @@ function SignUp() {
             required
           />
         </div>
-        <div className="mt-5">
+        <div className="mt-4">
           <label>Date Of Birth</label>
           <input 
             type="date"
             className="form-control"       
           />
         </div>
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+        <div className="d-grid ">
+          <button type="submit" className="mt-3 btn btn-primary">
             Sign Up
           </button>
         </div>
         <Link style={{textDecoration:'none'}} to="/">
-        <Typography style={{color:'green'}} className="forgot-password text-right">
+        <Typography style={{color:'black'}} className="forgot-password text-right">
           Already registered Log in?
         </Typography>
         </Link>
