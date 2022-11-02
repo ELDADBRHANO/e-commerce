@@ -17,7 +17,7 @@ function App() {
       style={{ height: "100vh", overflowY: "auto" }}
     >
   
-      <Router basepath="ALL">
+      <Router baseName="ALL">
         <Login path="/" />
         <Login path="/ALL" />
         <SignUp path="signup"/>
