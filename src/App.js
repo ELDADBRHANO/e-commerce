@@ -21,7 +21,7 @@ function App() {
         <Login path="/" />
         <Login path="/e-commerce" />
         <SignUp path="signup"/>
-        <Home path="/Home"/>
+        <Home path="Home"/>
         <CheckOut path="CheckOut"/>
         <Cart path="cart" />
         <NotFound default/>
