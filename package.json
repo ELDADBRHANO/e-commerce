@@ -1,7 +1,8 @@
 {
   "name": "e-commerce",
+  "homepage":"https://ELDADBRHANO.github.io/e-commerce",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -15,6 +16,7 @@
     "cypress": "^10.10.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.12.1",
+    "gh-pages": "^4.0.0",
     "mdb-react-ui-kit": "^4.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
@@ -29,6 +31,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

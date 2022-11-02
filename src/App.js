@@ -17,8 +17,9 @@ function App() {
       style={{ height: "100vh", overflowY: "auto" }}
     >
   
-      <Router>
+      <Router basepath="e-commerce">
         <Login path="/" />
+        <Login path="/e-commerce" />
         <SignUp path="signup"/>
         <Home path="Home"/>
         <CheckOut path="CheckOut"/>
