@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>e-commerce</title>
     <script type="text/javascript">
-      let pathSegmentsToKeep = 1;
+      var pathSegmentsToKeep = 0;
 
-      let l = window.location;
+      var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
         l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +

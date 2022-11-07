@@ -7,18 +7,15 @@ import Login from "./components/featurs/Login/Login";
 import SignUp from "./components/featurs/SignUp/SignUp";
 import NotFound from "./components/pages/NotFound/NotFound";
 import CheckOut from "./components/featurs/CheckOut/CheckOut";
-
 function App() {
   const [theme] = useThemeHook();
-
   return (
     <main data-testid="main"
       className={theme ? "bg-black" : "bg-light"}
       style={{ height: "100vh", overflowY: "auto" }}
     >
-  
-      <Router basepath="e-commerce">
-        <Login path="/" />
+      <Router basename="/e-commerce">
+         <Login path="/" />
         <Login path="/e-commerce" />
         <SignUp path="signup"/>
         <Home path="Home"/>
