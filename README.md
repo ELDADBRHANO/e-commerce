@@ -18,6 +18,7 @@ The e-commerce application was built using the following technologies:
 - JavaScript
 - Bootstrap
 - Google Fonts
+- FireBase
 - Font Awesome
 
 ## Installation
